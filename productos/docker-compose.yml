@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  npm:
+    build: ./
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: nginx-server
+    restart: always
+    ports:
+      - 8080:80
+
